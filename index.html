@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Invited — Wedding RSVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="petals" aria-hidden="true"></div>
+
+  <main>
+    <!-- HERO + OPENING SEQUENCE: one envelope, opens as you scroll -->
+    <section class="opening-sequence" id="invitation">
+      <div class="opening-stage">
+        <p class="eyebrow">A little something special</p>
+        <h1>You're Invited</h1>
+
+        <div class="scroll-envelope" id="scrollEnvelope">
+          <div class="scroll-envelope-body"></div>
+          <div class="scroll-flap"></div>
+          <div class="scroll-seal">♥</div>
+          <div class="scroll-peek">
+            <span class="small">THE WEDDING OF</span>
+            <strong>Clayton<br>&amp; Your Name</strong>
+            <span class="date">12 · 06 · 2027</span>
+          </div>
+        </div>
+
+        <a class="scroll-hint" href="#letter">Scroll to open your invitation <span>↓</span></a>
+      </div>
+    </section>
+
+    <!-- THE LETTER: normal in-flow content, revealed once the envelope has opened -->
+    <section class="letter-section" id="letter">
+      <article class="paper">
+        <div class="paper-inner">
+          <p class="eyebrow">Together with their families</p>
+          <h2>Clayton <em>&amp;</em> Your Name</h2>
+          <div class="rule"></div>
+          <p class="copy">joyfully invite you to share in the celebration of their marriage.</p>
+
+          <div class="details">
+            <div><span>Date</span><strong>Saturday, 12 June 2027</strong></div>
+            <div><span>Time</span><strong>2:00 PM</strong></div>
+            <div><span>Venue</span><strong>Sparth House</strong></div>
+          </div>
+
+          <a class="outline" href="#location">View wedding details ↓</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="content-section" id="location">
+      <div class="section-heading">
+        <p class="eyebrow">The celebration</p>
+        <h2>Where to find us</h2>
+        <p>Sparth House<br>Whalley Road<br>Clayton le Moors, Lancashire BB5 5RP</p>
+      </div>
+      <div class="map-card">
+        <div class="map-art">
+          <div class="pin">♥</div>
+          <div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div>
+          <span class="map-label one">SPARTH HOUSE</span>
+          <span class="map-label two">CLAYTON LE MOORS</span>
+        </div>
+        <a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Sparth+House%2C+Whalley+Road%2C+Clayton+le+Moors%2C+Lancashire%2C+BB5+5RP">Get Directions ↗</a>
+      </div>
+    </section>
+
+    <section class="rsvp-section" id="rsvp">
+      <div class="rsvp-card">
+        <p class="eyebrow">We'd love to know</p>
+        <h2>Will you join us?</h2>
+        <p class="sub">Please let us know by filling in the details below.</p>
+
+        <form id="rsvpForm">
+          <label>Your name
+            <input name="name" required placeholder="e.g. Sarah Smith">
+          </label>
+
+          <fieldset>
+            <legend>Will you be attending?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="attending" value="Yes, I'll be there" required><span>Yes, I'll be there ♥</span></label>
+              <label class="choice"><input type="radio" name="attending" value="Sorry, I can't make it"><span>Sorry, I can't make it</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Dietary requirements</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="diet" value="None"> None</label>
+              <label><input type="checkbox" name="diet" value="Vegetarian"> Vegetarian</label>
+              <label><input type="checkbox" name="diet" value="Vegan"> Vegan</label>
+              <label><input type="checkbox" name="diet" value="Gluten-free"> Gluten-free</label>
+              <label><input type="checkbox" name="diet" value="Other"> Other</label>
+            </div>
+          </fieldset>
+
+          <label>Allergies or other requirements
+            <textarea name="notes" rows="4" placeholder="Please tell us anything the caterers should know..."></textarea>
+          </label>
+
+          <button class="primary submit" type="submit">Send RSVP ♥</button>
+        </form>
+
+        <div class="success" id="success" hidden>
+          <div class="heart">♥</div>
+          <h2>Thank you!</h2>
+          <p>Your RSVP has been recorded. We can't wait to celebrate with you.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>With love · Clayton &amp; Your Name</footer>
+  <script src="script.js"></script>
+</body>
+</html>

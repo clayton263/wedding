@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're Invited — Wedding RSVP</title>
+  <title>Charlie &amp; Nicola — You're Invited</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   <div class="petals" aria-hidden="true"></div>
 
   <main>
-    <!-- HERO + OPENING SEQUENCE: one envelope, opens as you scroll -->
+    <!-- ENVELOPE: opens as you scroll -->
     <section class="opening-sequence" id="invitation">
       <div class="opening-stage">
         <p class="eyebrow">A little something special</p>
@@ -21,32 +21,31 @@
 
         <div class="scroll-envelope" id="scrollEnvelope">
           <div class="scroll-envelope-body"></div>
-          <div class="scroll-flap"></div>
-          <div class="scroll-seal">♥</div>
           <div class="scroll-peek">
             <span class="small">THE WEDDING OF</span>
-            <strong>Clayton<br>&amp; Your Name</strong>
-            <span class="date">12 · 06 · 2027</span>
+            <strong>Charlie<br>&amp; Nicola</strong>
+            <span class="date">09 · 01 · 2027</span>
           </div>
+          <div class="scroll-flap"></div>
+          <div class="scroll-seal">♥</div>
         </div>
 
         <a class="scroll-hint" href="#letter">Scroll to open your invitation <span>↓</span></a>
       </div>
     </section>
 
-    <!-- THE LETTER: normal in-flow content, revealed once the envelope has opened -->
+    <!-- THE LETTER -->
     <section class="letter-section" id="letter">
       <article class="paper">
         <div class="paper-inner">
           <p class="eyebrow">Together with their families</p>
-          <h2>Clayton <em>&amp;</em> Your Name</h2>
+          <h2>Charlie <em>&amp;</em> Nicola</h2>
           <div class="rule"></div>
           <p class="copy">joyfully invite you to share in the celebration of their marriage.</p>
 
           <div class="details">
-            <div><span>Date</span><strong>Saturday, 12 June 2027</strong></div>
+            <div><span>Date</span><strong>Saturday, 9 January 2027</strong></div>
             <div><span>Time</span><strong>2:00 PM</strong></div>
-            <div><span>Venue</span><strong>Sparth House</strong></div>
           </div>
 
           <a class="outline" href="#location">View wedding details ↓</a>
@@ -57,7 +56,7 @@
     <section class="content-section" id="location">
       <div class="section-heading">
         <p class="eyebrow">The celebration</p>
-        <h2>Where to find us</h2>
+        <h2>Venue</h2>
         <p>Sparth House<br>Whalley Road<br>Clayton le Moors, Lancashire BB5 5RP</p>
       </div>
       <div class="map-card">
@@ -75,34 +74,15 @@
       <div class="rsvp-card">
         <p class="eyebrow">We'd love to know</p>
         <h2>Will you join us?</h2>
-        <p class="sub">Please let us know by filling in the details below.</p>
+        <p class="sub">Please confirm your invitation</p>
 
         <form id="rsvpForm">
-          <label>Your name
-            <input name="name" required placeholder="e.g. Sarah Smith">
-          </label>
+          <div class="guests" id="guestsContainer"></div>
 
-          <fieldset>
-            <legend>Will you be attending?</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="attending" value="Yes, I'll be there" required><span>Yes, I'll be there ♥</span></label>
-              <label class="choice"><input type="radio" name="attending" value="Sorry, I can't make it"><span>Sorry, I can't make it</span></label>
-            </div>
-          </fieldset>
+          <button class="add-guest" type="button" id="addGuestBtn">+ Confirm another invitation</button>
 
-          <fieldset>
-            <legend>Dietary requirements</legend>
-            <div class="checks">
-              <label><input type="checkbox" name="diet" value="None"> None</label>
-              <label><input type="checkbox" name="diet" value="Vegetarian"> Vegetarian</label>
-              <label><input type="checkbox" name="diet" value="Vegan"> Vegan</label>
-              <label><input type="checkbox" name="diet" value="Gluten-free"> Gluten-free</label>
-              <label><input type="checkbox" name="diet" value="Other"> Other</label>
-            </div>
-          </fieldset>
-
-          <label>Allergies or other requirements
-            <textarea name="notes" rows="4" placeholder="Please tell us anything the caterers should know..."></textarea>
+          <label>Any other info
+            <textarea name="notes" rows="4" placeholder="Anything else we should know..."></textarea>
           </label>
 
           <button class="primary submit" type="submit">Send RSVP ♥</button>
@@ -117,7 +97,48 @@
     </section>
   </main>
 
-  <footer>With love · Clayton &amp; Your Name</footer>
+  <footer>With love · Charlie &amp; Nicola</footer>
+
+  <!-- Template for one guest's set of questions, cloned by script.js -->
+  <template id="guestTemplate">
+    <div class="guest-card">
+      <div class="guest-card-head">
+        <span class="guest-number"></span>
+        <button type="button" class="remove-guest" aria-label="Remove this guest">✕</button>
+      </div>
+
+      <input type="text" class="guest-name" required placeholder="Confirm name on invite" aria-label="Guest name">
+
+      <fieldset>
+        <legend>Will they be attending?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" class="guest-attending" value="Yes, they'll be there" required><span>Yes, they'll be there ♥</span></label>
+          <label class="choice"><input type="radio" class="guest-attending" value="Sorry, can't make it"><span>Sorry, can't make it</span></label>
+        </div>
+      </fieldset>
+
+      <div class="guest-extra is-hidden">
+        <fieldset>
+          <legend>Food allergies &amp; dietary requirements</legend>
+          <div class="checks">
+            <label><input type="checkbox" class="guest-diet" value="None"> None</label>
+            <label><input type="checkbox" class="guest-diet" value="Vegetarian"> Vegetarian</label>
+            <label><input type="checkbox" class="guest-diet" value="Vegan"> Vegan</label>
+            <label><input type="checkbox" class="guest-diet" value="Gluten-free"> Gluten-free</label>
+            <label><input type="checkbox" class="guest-diet" value="Other"> Other</label>
+          </div>
+          <label class="diet-notes is-hidden">More info
+            <textarea class="guest-diet-notes" rows="3" placeholder="e.g. how severe, specific foods to avoid..."></textarea>
+          </label>
+        </fieldset>
+
+        <label>What song will get them on the dance floor?
+          <input type="text" class="guest-song" placeholder="e.g. Dancing Queen — ABBA">
+        </label>
+      </div>
+    </div>
+  </template>
+
   <script src="script.js"></script>
 </body>
 </html>
